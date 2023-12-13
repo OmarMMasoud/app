@@ -5,7 +5,7 @@ const app = express();
 
 app.get('/', function(req, res) {
     // Join the current directory of the module with the relative path of the HTML file
-     res.sendFile(path.join(__dirname, '../frontend/index.html'));
+     res.sendFile(path.join(__dirname, '../frontend/app/src/app.js'));
    
 });
 
