@@ -1,8 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
+import './style/style.scss'
 
 //components
 import Sidebar from './components/Sidebar';
+import Nav from './components/Nav';
 
 //pages
 import Home from "./pages/Main";
@@ -17,6 +19,7 @@ const App = () => {
  return (
     <Router>
       <div className="app">
+       <Nav/>
        <Sidebar/>
 
        <div className="content">
