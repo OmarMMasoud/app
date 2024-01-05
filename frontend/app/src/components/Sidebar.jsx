@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import {SidebarData} from './SidebarData'
 import '../style/Navbar.scss'
 
+//icons
+import { BiSolidHide } from "react-icons/bi";
+import { IoIosEye } from "react-icons/io";
+
+
 const Sidebar = () => {
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -31,7 +36,8 @@ const Sidebar = () => {
         </ul>
 
         <button className={'openClose'} onClick={toggleSidebar}>
-        {sidebarOpen ? 'hi' : 'Open Sidebar'}
+        {sidebarOpen ? <BiSolidHide className='closeNOpen'/> : <IoIosEye className='closeNOpen'/>
+}
       
       </button>
 
