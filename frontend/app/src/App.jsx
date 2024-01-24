@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Nav from './components/Nav';
 
+
 //pages
 import Home from "./pages/Main";
 import Products from "./pages/Products";

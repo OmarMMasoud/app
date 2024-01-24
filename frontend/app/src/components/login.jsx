@@ -2,32 +2,40 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const Login = () => {
- const [email, setEmail] = useState('');
- const [password, setPassword] = useState('');
- const [error, setError] = useState('');
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
 
- const handleSubmit = async (e) => {
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/users/login', { email, password });
-      localStorage.setItem('user', JSON.stringify(response.data));
-      window.location.href = '/';
+      const response = await axios.post('/login', formData);
+      console.log(response.data);
+      // Store the token in a cookie or local storage
+      // and redirect the user to the main page
     } catch (error) {
-      setError(error.response.data);
+      console.error(error.response.data);
     }
- };
+  };
 
- return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <button type="submit">Login</button>
-      </form>
-      {error && <p>{error}</p>}
-    </div>
- );
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Email:
+        <input type="email" name="email" onChange={handleChange} />
+      </label>
+      <label>
+        Password:
+        <input type="password" name="password" onChange={handleChange} />
+      </label>
+      <button type="submit">Log In</button>
+    </form>
+  );
 };
 
 export default Login;
